@@ -1,13 +1,38 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + TS</title>
+</head>
+
+<body>
+  <main>
+    <h1>Tournament</h1>
+    <p>A simple tournament app</p>
+    <div>
+
+      <div>
+        <form action="" id="player-form">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" />
+          <button type="submit">Submit</button>
+          <button id="start-button">Start</button>
+        </form>
+      </div>
+      <div id="players" class="flex-container">
+
+      </div>
+
+
+      <div id="app"></div>
+      <div id="history"></div>
+    </div>
+  </main>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
