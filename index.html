@@ -15,11 +15,17 @@
     <div>
 
       <div>
-        <form action="" id="player-form">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" />
-          <button type="submit">Submit</button>
-          <button id="start-button">Start</button>
+        <form action="" id="player-form" class="form">
+          <h2>Players</h2>
+          <div class="form-row">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" />
+          </div>
+
+          <div class="form-row">
+            <button type="submit" class="button">Submit</button>
+            <button id="start-button" type="button" class="button">Start</button>
+          </div>
         </form>
       </div>
       <div id="players" class="flex-container">

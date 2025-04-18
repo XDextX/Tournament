@@ -3,17 +3,136 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow-wrap: anywhere;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 
 .flex-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  max-width: 100%;
+  flex-wrap: wrap;
 }
 
 .flex-container>* {
-  flex: 1 20%;
+  min-width: 80px;
+  border: #45a049 1px solid;
+}
+
+.match-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  transition: transform 0.2s;
+}
+
+.match-card:hover {
+  transform: scale(1.02);
+}
+
+.player {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #fafafa;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.player:hover {
+  border-color: #888;
+}
+
+.player.selected {
+  background-color: #cfc;
+  border-color: #4CAF50;
+  font-weight: bold;
+}
+
+.bye-match {
+  background-color: #fffae6;
+  border: 1px dashed #aaa;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  font-style: italic;
+}
+
+.button {
+  margin-top: 30px;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.remove-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.remove-btn:hover {
+  color: #f44336;
+  background-color: transparent;
+}
+
+.winner-msg {
+  font-size: 28px;
+  margin-top: 40px;
+  text-align: center;
+  font-weight: bold;
+  color: #2196F3;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  max-width: fit-content;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.form-row label {
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  padding: 5px;
 }
