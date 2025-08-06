@@ -1,6 +1,8 @@
 import { Player, Match } from './models/Player'
-import { matchMaking } from './logic/matchmaking';
+import { createMatches } from './logic/matchmaking';
+import { getActionButton, getMatchElement, getPlayerElement } from './ui/render';
 import './style.css';
+import { attachSelectionHandler } from './ui/events';
 
 // DOM Elements
 const appElement = document.querySelector<HTMLDivElement>('#app')!;
@@ -37,22 +39,25 @@ function handlePlayerSubmit(e: Event) {
   players.push(new Player(name));
   playerForm.reset();
   renderPlayers();
+
 }
 
 function renderPlayers() {
   playersElement.innerHTML = '';
   players.forEach(player => {
-    const playerEl = createPlayerElement(player);
-    const removeBtn = document.createElement('button');
-    removeBtn.innerText = 'X';
-    removeBtn.addEventListener('click', () => {
+    const playerEl = getPlayerElement(player);
+
+    const removeBtn = getActionButton(() => {
       players.splice(players.indexOf(player), 1);
       renderPlayers();
     });
-    removeBtn.classList.add('remove-btn');
-    playerEl.appendChild(removeBtn);
 
+    removeBtn.classList.add('remove-btn');
+    removeBtn.textContent = 'X';
+
+    playerEl.appendChild(removeBtn);
     playersElement.appendChild(playerEl);
+
   });
 }
 
@@ -66,7 +71,7 @@ function nextRound(currentPlayers: Player[]) {
   matchBoard.classList.add('flex-container');
   matchBoard.style.border = '1px solid black';
 
-  const matches = matchMaking(currentPlayers);
+  const matches = createMatches(currentPlayers);
   rounds.push(matches);
 
   const matchElements = generateMatchElements(matches);
@@ -107,9 +112,9 @@ function generateMatchElements(matches: Match[]): HTMLElement[] {
   return matches.map(match => {
     if (match.player2 == null) return createByeMatchElement(match.player1);
 
-    const matchEl = document.createElement('div');
-    const p1El = createPlayerElement(match.player1);
-    const p2El = createPlayerElement(match.player2);
+    const matchEl = getMatchElement();
+    const p1El = getPlayerElement(match.player1);
+    const p2El = getPlayerElement(match.player2);
     let selected: HTMLElement | undefined;
 
     const lockSelection = () => {
@@ -132,37 +137,8 @@ function generateMatchElements(matches: Match[]): HTMLElement[] {
       lockSelection();
     });
 
-    matchEl.classList.add('match-card', 'flex-container');
-    Object.assign(matchEl.style, {
-      border: '1px solid black',
-      margin: '10px',
-      padding: '5px',
-    });
-
     matchEl.append(p1El, p2El);
     return matchEl;
-  });
-}
-
-function createPlayerElement(player: Player): HTMLElement {
-  const el = document.createElement('button');
-  el.innerHTML = player.render();
-  el.classList.add('player', 'flex-container');
-  return el;
-}
-
-function attachSelectionHandler(
-  el: HTMLElement,
-  getSelected: () => HTMLElement | undefined,
-  setSelected: (el: HTMLElement) => void
-) {
-  el.addEventListener('click', () => {
-    const selected = getSelected();
-    if (selected === el) return;
-    if (selected) selected.classList.remove('selected');
-    el.classList.add('selected');
-    setSelected(el);
-    renderPlayers();
   });
 }
 

@@ -1,10 +1,10 @@
 :root {
-  --primary: #4caf50;
-  --primary-hover: #43a047;
-  --background: #f9f9f9;
-  --card: #fff;
-  --text: #333;
-  --border: #ddd;
+  --primary: #08A045;
+  --primary-hover: #0B6E4F;
+  --background: #073B3A;
+  --card: #6BBF59;
+  --text: #fff;
+  --border: #DDB771;
 }
 
 /* simple reset */
@@ -50,7 +50,7 @@ h3 {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: white;
+  background-color: var(--card);
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 10px;
@@ -85,8 +85,8 @@ h3 {
 }
 
 .player.selected {
-  background-color: #cfc;
-  border-color: #4CAF50;
+  background-color: var(--primary);
+  border-color: var(--border);
   font-weight: bold;
 }
 

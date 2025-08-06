@@ -1,8 +1,7 @@
 import { Player, Match } from "../models/Player";
 
-export function matchMaking(players: Player[]) {
+export function createMatches(players: Player[]) {
     // Build a list of matches for rounds
-    console.log(players);
 
     let matches: Match[] = [];
     const shuffled = [...players]
@@ -21,4 +20,5 @@ export function matchMaking(players: Player[]) {
 
     return matches;
 }
+
 
